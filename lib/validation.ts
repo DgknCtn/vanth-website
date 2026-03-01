@@ -35,6 +35,13 @@ export function validateDiscordHandle(handle: string): string | null {
   return null;
 }
 
+export function validateEssay(text: string, minLength = 100): string | null {
+  if (!text || text.trim().length < minLength) {
+    return `Minimum ${minLength} characters required.`;
+  }
+  return null;
+}
+
 export interface WhitelistFormData {
   wallet_address: string;
   twitter_handle: string;

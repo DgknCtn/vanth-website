@@ -72,7 +72,7 @@ export function Navbar() {
                 borderRadius="12px"
                 className="px-5 py-2.5 text-sm font-bold text-white"
               >
-                Join Whitelist
+                Request Access
               </ShimmerButton>
             </Link>
           </div>
@@ -122,7 +122,7 @@ export function Navbar() {
                   borderRadius="12px"
                   className="w-full py-3 text-sm font-bold text-white justify-center"
                 >
-                  Join Whitelist
+                  Request Access
                 </ShimmerButton>
               </Link>
             </div>
