@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Particles } from "@/components/ui/particles";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
@@ -38,39 +38,21 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 flex flex-col items-center">
 
-        {/* Animated badge */}
-        <AnimatedGradientText className="mb-8 cursor-default dark:bg-black/40 border-white/10">
-          <span className="text-xs font-semibold tracking-widest uppercase text-white/80">
-            ✦ Solana NFT Collection
-          </span>
-          <ChevronRight className="ml-1 w-3.5 h-3.5 text-white/50" />
-        </AnimatedGradientText>
-
-        {/* Main title */}
-        <h1 className="text-[7rem] sm:text-[10rem] font-black tracking-[0.25em] leading-none mb-6 select-none">
-          <span
-            className="text-transparent bg-clip-text"
-            style={{
-              backgroundImage: "linear-gradient(135deg, #fff 0%, #e2d9f3 30%, #a855f7 60%, #ec4899 100%)",
-            }}
-          >
-            VANTH
-          </span>
-        </h1>
+        {/* Logo */}
+        <div className="mb-10 select-none">
+          <Image
+            src="/images/gallery/logo.png"
+            alt="VANTH"
+            width={480}
+            height={160}
+            className="w-auto h-auto max-w-[300px] sm:max-w-[420px] mx-auto"
+            priority
+          />
+        </div>
 
         {/* Tagline */}
-        <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-3 leading-relaxed">
+        <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
           Vanth is a web3 focused project inspired by the best with an innovative and dynamic style.
-        </p>
-        <p className="text-sm text-slate-500 mb-12 tracking-wide">
-          <span className="text-pink-400/80">Anime</span>
-          {" · "}
-          <span className="text-cyan-400/80">Cyberpunk</span>
-          {" · "}
-          <span className="text-purple-400/80">Solana</span>
-          {" · "}
-          Mint on{" "}
-          <span className="text-purple-400 font-semibold">Magic Eden only</span>
         </p>
 
         {/* CTAs */}

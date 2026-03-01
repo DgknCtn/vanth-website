@@ -1,5 +1,5 @@
-import { TBABadge, ComingSoonBadge } from "@/components/ui/TBABadge";
-import { Check, Clock, Loader } from "lucide-react";
+import { TBABadge } from "@/components/ui/TBABadge";
+import { CheckCircle, Clock, Loader } from "lucide-react";
 
 export const metadata = {
   title: "Roadmap — VANTH NFT Collection",
@@ -12,63 +12,49 @@ const phases = [
     name: "Phase 0",
     title: "Foundation",
     status: "complete",
-    deliverables: [
-      "Project concept definition & art direction",
-      "Team formation (CEO, CTO, Designer, Developer)",
-      "Website launch with official links",
-      "Social presence established (X + Discord)",
-      "GitBook documentation",
-      "Whitelist collection begins",
-    ],
-    completionCriteria: [
-      "Website live with all informational pages",
-      "Official X and Discord accounts active",
-      "Whitelist form collecting submissions",
+    items: [
+      "Create a unique narrative and artistic vision for each special character in the collection.",
+      "Build a strong community on social platforms (Twitter and Discord).",
+      "Design and finalize the artwork, take inspiration from the best and ensure high quality.",
+      "Collaborate with DAOs and other NFT projects to best promote the project.",
+      "Integrate AI chatbots on our Discord server to instantly answer questions and direct new participants.",
+      "Open the first mint phase to whitelisted contributors, followed by a transparent and fair public sale.",
+      "Early adopters gain first access to key roles and interactive features.",
+      "Special incentive services for Rare and Legend NFT owners.",
     ],
   },
   {
     id: 1,
     name: "Phase 1",
-    title: "Launch Readiness",
+    title: "Launch & Community",
     status: "active",
-    deliverables: [
-      "Final NFT artwork completion",
-      "Magic Eden collection listing",
-      "Community growth milestones",
-      "Whitelist snapshot & eligibility confirmation",
-      "Mint date announcement",
-      "Supply announcement",
-    ],
-    completionCriteria: [
-      "Collection listed on Magic Eden",
-      "Mint date publicly announced",
-      "Whitelist snapshot completed",
+    items: [
+      "Assign specific roles to each owner and create a dedicated DAO.",
+      "Special events within the project, raffles and access to decision-making within the project.",
+      "Staking operations initiated — at least 80% of secondary market revenues paid back to the community through Vanth staking.",
+      "Develop policies to protect the floor price and maintain stability.",
+      "VNTH Token Launch: the VNTH token will be released to Vanth holders via airdrop.",
+      "Collaborations: partner with established NFT collections for cross-community benefits and joint events.",
     ],
   },
   {
     id: 2,
     name: "Phase 2",
-    title: "Post-Launch Utility",
+    title: "Utility & Expansion",
     status: "upcoming",
-    deliverables: [
-      "Staking contract deployment on Solana",
-      "VNTH token mechanics finalization",
-      "Staking dashboard launch on this site",
-      "Holder reward programs",
-      "Community experiences & events",
-      "Long-term art & identity expansion",
-    ],
-    completionCriteria: [
-      "Staking live with verified contract address",
-      "VNTH token mechanics published",
-      "First holder rewards distributed",
+    items: [
+      "AI + AR integrations: animate your NFT in the real world with the phone camera.",
+      "Game integration: develop a play-to-earn (P2E) game featuring NFTs as in-game characters and assets.",
+      "Private chat rooms created for owners to network and keep the community alive.",
+      "Community-produced stories, songs and fan art — the best contributions get rewarded.",
+      "Workshops with Web3 experts and career counselling opportunities for holders.",
     ],
     tba: true,
   },
 ];
 
 const statusConfig = {
-  complete: { icon: Check, color: "text-green-400", bg: "bg-green-500/10 border-green-500/20", label: "Complete" },
+  complete: { icon: CheckCircle, color: "text-green-400", bg: "bg-green-500/10 border-green-500/20", label: "Complete" },
   active: { icon: Loader, color: "text-purple-400", bg: "bg-purple-500/10 border-purple-500/20", label: "In Progress" },
   upcoming: { icon: Clock, color: "text-slate-500", bg: "bg-[#10101e] border-white/5", label: "Upcoming" },
 };
@@ -84,7 +70,7 @@ export default function RoadmapPage() {
       </div>
 
       <div className="space-y-8">
-        {phases.map((phase, idx) => {
+        {phases.map((phase) => {
           const config = statusConfig[phase.status as keyof typeof statusConfig];
           return (
             <div key={phase.id} className={`border rounded-2xl p-6 sm:p-8 ${config.bg}`}>
@@ -101,30 +87,14 @@ export default function RoadmapPage() {
                 {phase.tba && <TBABadge label="Details TBA" />}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Deliverables</h3>
-                  <ul className="space-y-2">
-                    {phase.deliverables.map((d) => (
-                      <li key={d} className="flex items-start gap-2 text-sm text-slate-400">
-                        <span className={`mt-1 w-1.5 h-1.5 rounded-full shrink-0 ${phase.status === "complete" ? "bg-green-400" : phase.status === "active" ? "bg-purple-400" : "bg-slate-600"}`} />
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Completion Criteria</h3>
-                  <ul className="space-y-2">
-                    {phase.completionCriteria.map((c) => (
-                      <li key={c} className="flex items-start gap-2 text-sm text-slate-400">
-                        <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${phase.status === "complete" ? "text-green-400" : "text-slate-600"}`} />
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              <ul className="space-y-3">
+                {phase.items.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-slate-400">
+                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${phase.status === "complete" ? "bg-green-400" : phase.status === "active" ? "bg-purple-400" : "bg-slate-600"}`} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           );
         })}

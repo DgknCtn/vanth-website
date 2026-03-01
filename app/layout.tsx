@@ -32,6 +32,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
+        {/* Banner background — subtle, fixed, behind everything */}
+        <div
+          className="fixed inset-0 z-[-1] pointer-events-none"
+          style={{
+            backgroundImage: "url('/images/gallery/banner.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.07,
+          }}
+        />
         <Navbar />
         <main className="flex-1">
           {children}
