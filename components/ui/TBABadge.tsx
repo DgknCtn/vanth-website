@@ -6,7 +6,7 @@ interface TBABadgeProps {
 export function TBABadge({ label = "TBA", className = "" }: TBABadgeProps) {
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 ${className}`}
+      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold font-mono bg-white/5 text-white/40 border border-white/10 ${className}`}
     >
       {label}
     </span>
@@ -16,9 +16,9 @@ export function TBABadge({ label = "TBA", className = "" }: TBABadgeProps) {
 export function ComingSoonBadge({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/30 ${className}`}
+      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold font-mono bg-white/5 text-white/40 border border-white/10 ${className}`}
     >
-      Coming Soon
+      Soon
     </span>
   );
 }

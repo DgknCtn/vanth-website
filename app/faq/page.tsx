@@ -77,16 +77,16 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
         aria-expanded={open}
       >
         <div className="flex items-center gap-3">
-          <span className="text-purple-500/50 text-xs font-mono w-5 shrink-0">{String(index + 1).padStart(2, "0")}</span>
+          <span className="text-white/20 text-xs font-mono w-5 shrink-0">{String(index + 1).padStart(2, "0")}</span>
           <span className="text-sm font-semibold text-white">{q}</span>
         </div>
         <ChevronDown
-          className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`w-4 h-4 text-white/25 shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
       {open && (
         <div className="px-5 pb-5 pl-14">
-          <p className="text-slate-400 text-sm leading-relaxed">{a}</p>
+          <p className="text-white/40 text-sm leading-relaxed">{a}</p>
         </div>
       )}
     </div>
@@ -98,7 +98,7 @@ export default function FAQPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl sm:text-5xl font-black tracking-wide text-white mb-4">FAQ</h1>
-        <p className="text-slate-400 max-w-lg mx-auto">
+        <p className="text-white/40 max-w-lg mx-auto">
           Common questions answered. If you have a question not covered here, ask in our Discord.
         </p>
       </div>
@@ -113,10 +113,10 @@ export default function FAQPage() {
         ))}
       </div>
 
-      <div className="mt-10 p-5 rounded-2xl bg-purple-500/5 border border-purple-500/20 text-center">
-        <p className="text-slate-400 text-sm">
+      <div className="mt-10 p-5 rounded bg-white/3 border border-white/8 text-center">
+        <p className="text-white/35 text-sm">
           Still have questions?{" "}
-          <a href="https://discord.gg/vanth" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline font-semibold">
+          <a href="https://discord.gg/vanth" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white hover:underline font-semibold transition-colors">
             Join our Discord
           </a>{" "}
           and ask the community or team.

@@ -10,9 +10,9 @@ const phases = [
     title: "Foundation",
     status: "complete",
     items: ["Project concept & art direction", "Team formation", "Website + social setup", "Whitelist collection"],
-    gradientColor: "#0d2a1a",
-    beamFrom: "#10b981",
-    beamTo: "#06b6d4",
+    gradientColor: "#141414",
+    beamFrom: "rgba(255,255,255,0.15)",
+    beamTo: "rgba(255,255,255,0.03)",
   },
   {
     id: 1,
@@ -20,9 +20,9 @@ const phases = [
     title: "Launch Readiness",
     status: "active",
     items: ["Final art completion", "Magic Eden listing", "Community building", "Whitelist snapshot"],
-    gradientColor: "#1e0b3b",
-    beamFrom: "#a855f7",
-    beamTo: "#ec4899",
+    gradientColor: "#1a1a1a",
+    beamFrom: "rgba(255,255,255,0.3)",
+    beamTo: "rgba(255,255,255,0.06)",
   },
   {
     id: 2,
@@ -30,16 +30,16 @@ const phases = [
     title: "Post-Launch Utility",
     status: "upcoming",
     items: ["Staking contract deployment", "VNTH token mechanics (TBA)", "Holder rewards", "Community experiences"],
-    gradientColor: "#0d1a2a",
-    beamFrom: "#475569",
-    beamTo: "#334155",
+    gradientColor: "#0f0f0f",
+    beamFrom: "rgba(255,255,255,0.08)",
+    beamTo: "rgba(255,255,255,0.02)",
   },
 ];
 
 const statusConfig = {
-  complete: { icon: Check, color: "text-green-400", dot: "bg-green-400", label: "Complete" },
-  active: { icon: Loader, color: "text-purple-400", dot: "bg-purple-400 animate-pulse", label: "In Progress" },
-  upcoming: { icon: Clock, color: "text-slate-500", dot: "bg-slate-600", label: "Upcoming" },
+  complete: { icon: Check, color: "text-white/70", dot: "bg-white/50", label: "Complete" },
+  active: { icon: Loader, color: "text-white", dot: "bg-white animate-pulse", label: "In Progress" },
+  upcoming: { icon: Clock, color: "text-white/25", dot: "bg-white/15", label: "Upcoming" },
 };
 
 export function RoadmapPreview() {
@@ -47,19 +47,19 @@ export function RoadmapPreview() {
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 border-t border-white/5">
       <div className="flex items-end justify-between mb-14">
         <div>
-          <p className="text-xs font-semibold tracking-widest uppercase text-cyan-400 mb-2">Development</p>
+          <p className="text-xs font-mono tracking-widest uppercase text-white/30 mb-2">Development</p>
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-2">Roadmap</h2>
-          <p className="text-slate-500 text-base">Clear milestones. Measurable delivery.</p>
+          <p className="text-white/35 text-base">Clear milestones. Measurable delivery.</p>
         </div>
         <Link
           href="/roadmap"
-          className="hidden sm:flex items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold text-sm transition-colors group"
+          className="hidden sm:flex items-center gap-2 text-white/50 hover:text-white font-mono text-sm transition-colors group"
         >
           Full Roadmap <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {phases.map((phase) => {
           const config = statusConfig[phase.status as keyof typeof statusConfig];
           return (
@@ -67,13 +67,13 @@ export function RoadmapPreview() {
               key={phase.id}
               gradientColor={phase.gradientColor}
               gradientOpacity={1}
-              className="relative rounded-2xl border-white/8 bg-[#10101e] overflow-hidden"
+              className="relative rounded border-white/8 bg-[#111111] overflow-hidden"
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
-                    <div className={`w-2 h-2 rounded-full ${config.dot}`} />
-                    <span className={`text-xs font-bold uppercase tracking-wider ${config.color}`}>
+                    <div className={`w-1.5 h-1.5 rounded-full ${config.dot}`} />
+                    <span className={`text-xs font-mono uppercase tracking-wider ${config.color}`}>
                       {phase.name}
                     </span>
                   </div>
@@ -82,8 +82,11 @@ export function RoadmapPreview() {
                 <h3 className="text-xl font-bold text-white mb-4">{phase.title}</h3>
                 <ul className="space-y-2">
                   {phase.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-slate-400">
-                      <span className={`mt-1.5 w-1 h-1 rounded-full shrink-0 ${phase.status === "complete" ? "bg-green-400" : phase.status === "active" ? "bg-purple-400" : "bg-slate-600"}`} />
+                    <li key={item} className="flex items-start gap-2 text-sm text-white/40">
+                      <span className={`mt-1.5 w-1 h-1 rounded-full shrink-0 ${
+                        phase.status === "complete" ? "bg-white/50" :
+                        phase.status === "active" ? "bg-white" : "bg-white/15"
+                      }`} />
                       {item}
                     </li>
                   ))}
@@ -104,7 +107,7 @@ export function RoadmapPreview() {
       </div>
 
       <div className="mt-8 text-center sm:hidden">
-        <Link href="/roadmap" className="inline-flex items-center gap-2 text-purple-400 font-semibold text-sm">
+        <Link href="/roadmap" className="inline-flex items-center gap-2 text-white/50 font-mono text-sm">
           Full Roadmap <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

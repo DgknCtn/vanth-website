@@ -75,7 +75,7 @@ export function ApplicationRow({ app, onUpdate }: Props) {
   }
 
   return (
-    <div className="bg-[#10101e] border border-white/5 rounded-xl overflow-hidden">
+    <div className="bg-[#111111] border border-white/5 rounded overflow-hidden">
       {/* Row header */}
       <div
         className="flex items-center gap-4 px-4 py-3 cursor-pointer hover:bg-white/[0.02] transition-colors"
@@ -83,17 +83,17 @@ export function ApplicationRow({ app, onUpdate }: Props) {
       >
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-mono text-xs text-slate-300">{truncate(app.applicant_wallet)}</span>
-            <span className="text-slate-600 text-xs">·</span>
-            <span className="text-slate-400 text-xs">@{app.twitter_handle}</span>
+            <span className="font-mono text-xs text-white/60">{truncate(app.applicant_wallet)}</span>
+            <span className="text-white/20 text-xs">·</span>
+            <span className="text-white/40 text-xs">@{app.twitter_handle}</span>
             {app.access_codes?.code && (
               <>
-                <span className="text-slate-600 text-xs">·</span>
-                <span className="text-slate-600 text-xs font-mono">{app.access_codes.code}</span>
+                <span className="text-white/20 text-xs">·</span>
+                <span className="text-white/25 text-xs font-mono">{app.access_codes.code}</span>
               </>
             )}
           </div>
-          <p className="text-slate-600 text-xs mt-0.5">
+          <p className="text-white/25 text-xs mt-0.5">
             {new Date(app.created_at).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
@@ -103,8 +103,8 @@ export function ApplicationRow({ app, onUpdate }: Props) {
         </div>
         <StatusBadge status={app.status} />
         {expanded
-          ? <ChevronUp className="w-4 h-4 text-slate-600 shrink-0" />
-          : <ChevronDown className="w-4 h-4 text-slate-600 shrink-0" />}
+          ? <ChevronUp className="w-4 h-4 text-white/25 shrink-0" />
+          : <ChevronDown className="w-4 h-4 text-white/25 shrink-0" />}
       </div>
 
       {/* Expanded panel */}
@@ -117,15 +117,15 @@ export function ApplicationRow({ app, onUpdate }: Props) {
             { label: "Concrete value", text: app.essay_value },
           ].map(({ label, text }) => (
             <div key={label}>
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">{label}</p>
-              <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">{text}</p>
+              <p className="text-xs font-mono text-white/30 uppercase tracking-wider mb-1">{label}</p>
+              <p className="text-sm text-white/60 leading-relaxed whitespace-pre-wrap">{text}</p>
             </div>
           ))}
 
           {/* Reference links */}
           {app.reference_links && app.reference_links.length > 0 && (
             <div>
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Reference Links</p>
+              <p className="text-xs font-mono text-white/30 uppercase tracking-wider mb-2">Reference Links</p>
               <ul className="space-y-1">
                 {app.reference_links.map((link, i) => (
                   <li key={i}>
@@ -133,7 +133,7 @@ export function ApplicationRow({ app, onUpdate }: Props) {
                       href={link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-purple-400 text-xs hover:underline flex items-center gap-1"
+                      className="text-white/50 hover:text-white text-xs hover:underline flex items-center gap-1 transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       {link}
@@ -148,11 +148,11 @@ export function ApplicationRow({ app, onUpdate }: Props) {
           <div className="border-t border-white/5 pt-4 space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div>
-                <label className="text-xs text-slate-500 mb-1 block">Status</label>
+                <label className="text-xs text-white/30 font-mono mb-1 block">Status</label>
                 <select
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
-                  className="w-full bg-[#0d0d1a] border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-purple-500/50"
+                  className="w-full bg-[#0a0a0a] border border-white/10 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-white/25"
                 >
                   {STATUSES.map((s) => (
                     <option key={s} value={s}>{s}</option>
@@ -160,24 +160,24 @@ export function ApplicationRow({ app, onUpdate }: Props) {
                 </select>
               </div>
               <div>
-                <label className="text-xs text-slate-500 mb-1 block">Score (1–10)</label>
+                <label className="text-xs text-white/30 font-mono mb-1 block">Score (1–10)</label>
                 <input
                   type="number"
                   min={1}
                   max={10}
                   value={score}
                   onChange={(e) => setScore(e.target.value)}
-                  className="w-full bg-[#0d0d1a] border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-purple-500/50"
+                  className="w-full bg-[#0a0a0a] border border-white/10 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-white/25"
                 />
               </div>
               <div className="flex items-end">
                 <button
                   onClick={handleSave}
                   disabled={saving}
-                  className={`w-full py-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
+                  className={`w-full py-2 rounded text-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
                     saved
-                      ? "bg-green-500/20 text-green-400"
-                      : "bg-purple-600/80 hover:bg-purple-600 text-white"
+                      ? "bg-white/8 text-white/60 border border-white/15"
+                      : "bg-white text-black hover:bg-white/90"
                   } disabled:opacity-50`}
                 >
                   <Save className="w-4 h-4" />
@@ -189,12 +189,12 @@ export function ApplicationRow({ app, onUpdate }: Props) {
             {saveError && <p className="text-red-400 text-xs">{saveError}</p>}
 
             <div>
-              <label className="text-xs text-slate-500 mb-1 block">Committee Notes</label>
+              <label className="text-xs text-white/30 font-mono mb-1 block">Committee Notes</label>
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 rows={3}
-                className="w-full bg-[#0d0d1a] border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-purple-500/50 resize-y"
+                className="w-full bg-[#0a0a0a] border border-white/10 rounded px-3 py-2 text-white text-sm focus:outline-none focus:border-white/25 resize-y"
                 placeholder="Internal notes (not visible to applicant)..."
               />
             </div>

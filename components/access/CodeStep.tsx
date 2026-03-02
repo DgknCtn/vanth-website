@@ -40,7 +40,7 @@ export function CodeStep({ onValidCode }: CodeStepProps) {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block text-sm font-semibold text-slate-300 mb-2">
+        <label className="block text-sm font-mono text-white/50 mb-2">
           Access Code
         </label>
         <div className="flex gap-3">
@@ -52,14 +52,14 @@ export function CodeStep({ onValidCode }: CodeStepProps) {
               if (status !== "idle") setStatus("idle");
             }}
             placeholder="VANTH-XXXX-XXXX"
-            className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 font-mono text-sm focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 transition-colors"
+            className="flex-1 bg-white/5 border border-white/10 rounded px-4 py-3 text-white placeholder:text-white/20 font-mono text-sm focus:outline-none focus:border-white/25 transition-colors"
             onKeyDown={(e) => e.key === "Enter" && handleValidate()}
             disabled={status === "loading" || status === "valid"}
           />
           <button
             onClick={handleValidate}
             disabled={status === "loading" || !code.trim() || status === "valid"}
-            className="px-5 py-3 rounded-xl bg-purple-600/80 hover:bg-purple-600 text-white font-semibold text-sm disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2 shrink-0"
+            className="px-5 py-3 rounded bg-white text-black font-semibold text-sm disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/90 transition-colors flex items-center gap-2 shrink-0"
           >
             {status === "loading" ? (
               <Loader2 className="w-4 h-4 animate-spin" />
@@ -69,14 +69,14 @@ export function CodeStep({ onValidCode }: CodeStepProps) {
       </div>
 
       {status === "valid" && (
-        <div className="flex items-start gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
-          <Check className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+        <div className="flex items-start gap-3 p-4 bg-white/8 border border-white/15 rounded">
+          <Check className="w-4 h-4 text-white/70 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <p className="text-green-400 text-sm font-semibold">{message}</p>
+            <p className="text-white/70 text-sm font-semibold">{message}</p>
           </div>
           <button
             onClick={() => onValidCode(code.trim().toUpperCase())}
-            className="px-4 py-1.5 rounded-lg bg-green-500/20 hover:bg-green-500/30 text-green-400 text-sm font-semibold transition-colors shrink-0"
+            className="px-4 py-1.5 rounded bg-white text-black text-sm font-semibold hover:bg-white/90 transition-colors shrink-0"
           >
             Continue →
           </button>
@@ -84,22 +84,22 @@ export function CodeStep({ onValidCode }: CodeStepProps) {
       )}
 
       {status === "locked" && (
-        <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
-          <Lock className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
-          <p className="text-yellow-400 text-sm">{message}</p>
+        <div className="flex items-start gap-3 p-4 bg-white/5 border border-white/10 rounded">
+          <Lock className="w-4 h-4 text-white/50 shrink-0 mt-0.5" />
+          <p className="text-white/50 text-sm">{message}</p>
         </div>
       )}
 
       {status === "invalid" && (
         <div className="space-y-3">
-          <div className="flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
-            <X className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-            <p className="text-red-400 text-sm">{message}</p>
+          <div className="flex items-start gap-3 p-4 bg-white/5 border border-white/10 rounded">
+            <X className="w-4 h-4 text-white/50 shrink-0 mt-0.5" />
+            <p className="text-white/50 text-sm">{message}</p>
           </div>
-          <div className="flex items-start gap-3 p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
-            <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-            <p className="text-slate-400 text-xs">
-              <span className="text-amber-400 font-semibold">Stay safe:</span>{" "}
+          <div className="flex items-start gap-3 p-4 bg-white/3 border border-white/8 rounded">
+            <AlertTriangle className="w-4 h-4 text-white/35 shrink-0 mt-0.5" />
+            <p className="text-white/35 text-xs">
+              <span className="text-white/55 font-semibold">Stay safe:</span>{" "}
               Access codes are distributed only through official VANTH channels. Never pay for an access code.
             </p>
           </div>

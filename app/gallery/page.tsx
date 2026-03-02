@@ -12,7 +12,7 @@ export default function GalleryPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl sm:text-5xl font-black tracking-wide text-white mb-4">Gallery</h1>
-        <p className="text-slate-400 max-w-lg mx-auto">
+        <p className="text-white/40 max-w-lg mx-auto">
           The VANTH universe in full view. Anime meets cyberpunk on the Solana blockchain.
         </p>
       </div>
@@ -23,7 +23,7 @@ export default function GalleryPage() {
         <ScamWarningBanner compact />
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href="/whitelist" variant="primary" size="md">
-            Join the Whitelist
+            Request Access
           </Button>
           <Button href="/story" variant="secondary" size="md">
             Read the Story

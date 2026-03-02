@@ -48,7 +48,7 @@ export function AdminDashboard({ initialApplications }: Props) {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-black text-white">Applications</h1>
-          <p className="text-slate-500 text-sm mt-0.5">
+          <p className="text-white/30 text-sm mt-0.5 font-mono">
             {applications.length} total · {applications.filter((a) => a.status === "SUBMITTED").length} new
           </p>
         </div>
@@ -56,13 +56,13 @@ export function AdminDashboard({ initialApplications }: Props) {
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex items-center gap-2 text-slate-500 hover:text-white text-sm transition-colors"
+            className="flex items-center gap-2 text-white/30 hover:text-white text-sm transition-colors"
           >
             <RefreshCw className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`} />
           </button>
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 text-slate-500 hover:text-red-400 text-sm transition-colors"
+            className="flex items-center gap-2 text-white/30 hover:text-white/70 text-sm transition-colors font-mono"
           >
             <LogOut className="w-4 h-4" />
             Sign out
@@ -81,11 +81,10 @@ export function AdminDashboard({ initialApplications }: Props) {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                activeTab === tab
-                  ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
-                  : "text-slate-500 hover:text-white hover:bg-white/5"
-              }`}
+              className={`px-3 py-1.5 rounded text-xs font-mono transition-colors ${activeTab === tab
+                  ? "bg-white/8 text-white border border-white/15"
+                  : "text-white/30 hover:text-white hover:bg-white/5"
+                }`}
             >
               {tab}
               {count > 0 && (
@@ -98,7 +97,7 @@ export function AdminDashboard({ initialApplications }: Props) {
 
       {/* Applications list */}
       {filtered.length === 0 ? (
-        <div className="text-center py-20 text-slate-600 text-sm">
+        <div className="text-center py-20 text-white/20 text-sm font-mono">
           No applications found.
         </div>
       ) : (

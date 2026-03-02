@@ -42,7 +42,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-3.5 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`relative px-3.5 py-2 text-sm font-medium font-mono tracking-wider transition-all duration-200 rounded-lg ${
                   pathname === link.href
                     ? "text-purple-400"
                     : "text-slate-500 hover:text-white"

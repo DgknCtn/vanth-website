@@ -17,19 +17,19 @@ interface ButtonProps {
 
 const variants = {
   primary:
-    "bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-pink-500 text-white shadow-lg shadow-purple-900/40 hover:shadow-purple-700/50 transition-all duration-300",
+    "bg-white text-black hover:bg-white/90 transition-colors duration-200",
   secondary:
-    "border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300",
+    "border border-white/15 text-white/70 hover:border-white/30 hover:text-white transition-all duration-200",
   ghost:
-    "border border-white/10 text-slate-300 hover:bg-white/5 hover:border-white/20 transition-all duration-300",
+    "text-white/50 hover:text-white transition-colors duration-200",
   disabled:
-    "border border-white/10 text-slate-500 cursor-not-allowed opacity-50",
+    "border border-white/8 text-white/20 cursor-not-allowed opacity-50",
 };
 
 const sizes = {
-  sm: "px-4 py-2 text-sm rounded-lg",
-  md: "px-6 py-3 text-sm rounded-xl",
-  lg: "px-8 py-4 text-base rounded-xl",
+  sm: "px-4 py-2 text-sm rounded",
+  md: "px-6 py-3 text-sm rounded",
+  lg: "px-8 py-4 text-base rounded",
 };
 
 export function Button({

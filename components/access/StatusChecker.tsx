@@ -37,8 +37,8 @@ export function StatusChecker() {
   }
 
   return (
-    <div className="bg-[#10101e] border border-white/5 rounded-2xl p-6">
-      <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+    <div className="bg-[#111111] border border-white/5 rounded p-6">
+      <h3 className="text-sm font-mono text-white/30 uppercase tracking-wider mb-4">
         Check Application Status
       </h3>
       <div className="flex gap-3 mb-4">
@@ -46,13 +46,13 @@ export function StatusChecker() {
           value={wallet}
           onChange={(e) => { setWallet(e.target.value); setState("idle"); }}
           placeholder="Your Solana wallet address"
-          className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 font-mono text-sm focus:outline-none focus:border-purple-500/50 transition-colors"
+          className="flex-1 bg-white/5 border border-white/10 rounded px-4 py-3 text-white placeholder:text-white/20 font-mono text-sm focus:outline-none focus:border-white/20 transition-colors"
           onKeyDown={(e) => e.key === "Enter" && handleCheck()}
         />
         <button
           onClick={handleCheck}
           disabled={state === "loading" || !wallet.trim()}
-          className="px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white transition-colors disabled:opacity-40 flex items-center gap-2"
+          className="px-4 py-3 rounded bg-white/5 border border-white/10 hover:border-white/20 text-white/50 hover:text-white transition-colors disabled:opacity-40 flex items-center gap-2"
         >
           {state === "loading" ? (
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -65,11 +65,11 @@ export function StatusChecker() {
       {state === "found" && result && (
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <span className="text-slate-500 text-xs">Status:</span>
+            <span className="text-white/30 text-xs font-mono">Status:</span>
             <StatusBadge status={result.status} />
           </div>
-          <p className="text-slate-400 text-sm">{STATUS_COPY[result.status] ?? "Status unknown."}</p>
-          <p className="text-slate-600 text-xs">
+          <p className="text-white/40 text-sm">{STATUS_COPY[result.status] ?? "Status unknown."}</p>
+          <p className="text-white/20 text-xs font-mono">
             Last updated:{" "}
             {new Date(result.updated_at).toLocaleDateString("en-US", {
               year: "numeric",
@@ -81,11 +81,11 @@ export function StatusChecker() {
       )}
 
       {state === "not_found" && (
-        <p className="text-slate-500 text-sm">No application found for this wallet address.</p>
+        <p className="text-white/30 text-sm">No application found for this wallet address.</p>
       )}
 
       {state === "error" && (
-        <p className="text-red-400 text-sm">Failed to check status. Please try again.</p>
+        <p className="text-white/40 text-sm">Failed to check status. Please try again.</p>
       )}
     </div>
   );

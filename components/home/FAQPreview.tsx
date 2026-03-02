@@ -67,7 +67,7 @@ export function FAQPreview() {
       <div className="text-center">
         <Link
           href="/faq"
-          className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-semibold text-sm transition-colors"
+          className="inline-flex items-center gap-2 text-white/50 hover:text-white font-mono text-sm transition-colors"
         >
           Read All FAQs <ArrowRight className="w-4 h-4" />
         </Link>

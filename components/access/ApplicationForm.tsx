@@ -122,17 +122,17 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
     }
   }
 
-  const inputBase = "w-full bg-white/5 border rounded-xl px-4 py-3 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:ring-1 transition-colors";
-  const inputOk = "border-white/10 focus:border-purple-500/50 focus:ring-purple-500/20";
-  const inputErr = "border-red-500/50 focus:ring-red-500/20";
+  const inputBase = "w-full bg-white/5 border rounded px-4 py-3 text-white placeholder:text-white/20 text-sm focus:outline-none transition-colors";
+  const inputOk = "border-white/10 focus:border-white/25";
+  const inputErr = "border-red-500/40";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Identity fields */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="sm:col-span-2">
-          <label className="block text-sm font-semibold text-slate-300 mb-1.5">
-            Solana Wallet Address <span className="text-red-400">*</span>
+          <label className="block text-sm font-semibold text-white/60 mb-1.5">
+            Solana Wallet Address <span className="text-white/40">*</span>
           </label>
           <input
             value={form.wallet_address}
@@ -144,8 +144,8 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-1.5">
-            X (Twitter) Username <span className="text-red-400">*</span>
+          <label className="block text-sm font-semibold text-white/60 mb-1.5">
+            X (Twitter) Username <span className="text-white/40">*</span>
           </label>
           <input
             value={form.twitter_handle}
@@ -157,8 +157,8 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-1.5">
-            Discord Username <span className="text-red-400">*</span>
+          <label className="block text-sm font-semibold text-white/60 mb-1.5">
+            Discord Username <span className="text-white/40">*</span>
           </label>
           <input
             value={form.discord_handle}
@@ -174,10 +174,10 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
       {ESSAYS.map((essay) => (
         <div key={essay.id}>
           <div className="flex items-baseline justify-between mb-1.5">
-            <label className="text-sm font-semibold text-slate-300">
-              {essay.label} <span className="text-red-400">*</span>
+            <label className="text-sm font-semibold text-white/60">
+              {essay.label} <span className="text-white/40">*</span>
             </label>
-            <span className={`text-xs ${form[essay.id].trim().length >= ESSAY_MIN ? "text-green-400" : "text-slate-600"}`}>
+            <span className={`text-xs font-mono ${form[essay.id].trim().length >= ESSAY_MIN ? "text-white/50" : "text-white/20"}`}>
               {form[essay.id].trim().length} / {ESSAY_MIN}+ chars
             </span>
           </div>
@@ -186,7 +186,7 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
             onChange={(e) => setField(essay.id, e.target.value)}
             placeholder={essay.placeholder}
             rows={4}
-            className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:ring-1 transition-colors resize-y min-h-[100px] ${errors[essay.id] ? inputErr : inputOk}`}
+            className={`w-full bg-white/5 border rounded px-4 py-3 text-white placeholder:text-white/20 text-sm focus:outline-none transition-colors resize-y min-h-[100px] ${errors[essay.id] ? inputErr : inputOk}`}
           />
           {errors[essay.id] && <p className="text-red-400 text-xs mt-1">{errors[essay.id]}</p>}
         </div>
@@ -194,18 +194,18 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
 
       {/* Reference links */}
       <div>
-        <label className="block text-sm font-semibold text-slate-300 mb-1.5">
+        <label className="block text-sm font-semibold text-white/60 mb-1.5">
           Reference Links{" "}
-          <span className="text-slate-500 font-normal">(optional, max 5)</span>
+          <span className="text-white/25 font-normal">(optional, max 5)</span>
         </label>
         <div className="space-y-2">
           {links.map((link, i) => (
-            <div key={i} className="flex items-center gap-2 bg-white/[0.03] border border-white/10 rounded-lg px-3 py-2">
-              <span className="flex-1 text-slate-400 text-xs truncate font-mono">{link}</span>
+            <div key={i} className="flex items-center gap-2 bg-white/[0.03] border border-white/10 rounded px-3 py-2">
+              <span className="flex-1 text-white/40 text-xs truncate font-mono">{link}</span>
               <button
                 type="button"
                 onClick={() => setLinks((l) => l.filter((_, idx) => idx !== i))}
-                className="text-slate-600 hover:text-red-400 transition-colors"
+                className="text-white/25 hover:text-white/60 transition-colors"
               >
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
@@ -218,13 +218,13 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
                 onChange={(e) => setLinkInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addLink(); } }}
                 placeholder="https://github.com/you or on-chain proof"
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white placeholder:text-slate-600 text-xs focus:outline-none focus:border-purple-500/50"
+                className="flex-1 bg-white/5 border border-white/10 rounded px-3 py-2 text-white placeholder:text-white/20 text-xs focus:outline-none focus:border-white/25"
               />
               <button
                 type="button"
                 onClick={addLink}
                 disabled={!linkInput.trim()}
-                className="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-white/20 transition-colors disabled:opacity-40"
+                className="px-3 py-2 rounded bg-white/5 border border-white/10 text-white/40 hover:text-white hover:border-white/20 transition-colors disabled:opacity-40"
               >
                 <Plus className="w-4 h-4" />
               </button>
@@ -235,16 +235,16 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
 
       {/* Acknowledgement */}
       <div>
-        <label className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-colors ${errors.ack_magiceden_only ? "border-red-500/30 bg-red-500/5" : "border-white/10 bg-white/[0.02] hover:border-white/20"}`}>
+        <label className={`flex items-start gap-3 p-4 rounded border cursor-pointer transition-colors ${errors.ack_magiceden_only ? "border-red-500/30 bg-red-500/5" : "border-white/10 bg-white/[0.02] hover:border-white/20"}`}>
           <input
             type="checkbox"
             checked={form.ack_magiceden_only}
             onChange={(e) => setField("ack_magiceden_only", e.target.checked)}
-            className="mt-0.5 accent-purple-500"
+            className="mt-0.5"
           />
-          <span className="text-slate-300 text-sm">
+          <span className="text-white/50 text-sm">
             I understand that minting happens on{" "}
-            <span className="text-purple-400 font-semibold">Magic Eden only</span>.
+            <span className="text-white font-semibold">Magic Eden only</span>.
             I will never send funds to any other address claiming to be VANTH.
           </span>
         </label>
@@ -263,14 +263,14 @@ export function ApplicationForm({ accessCode, onSuccess }: Props) {
       <button
         type="submit"
         disabled={submitState === "loading"}
-        className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-bold text-base transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full py-4 rounded bg-white text-black font-bold text-base hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {submitState === "loading" ? (
           <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</>
         ) : "Submit Application"}
       </button>
 
-      <p className="text-slate-600 text-xs text-center">
+      <p className="text-white/20 text-xs text-center font-mono">
         Codes are limited. Having a code does not guarantee acceptance.
       </p>
     </form>

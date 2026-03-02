@@ -65,25 +65,25 @@ export default function StakePage() {
           <h1 className="text-4xl sm:text-5xl font-black tracking-wide text-white">Stake</h1>
           <ComingSoonBadge />
         </div>
-        <p className="text-slate-400 leading-relaxed">
+        <p className="text-white/40 leading-relaxed">
           Stake your VANTH NFTs to earn VNTH tokens. The staking system is currently in development.
         </p>
       </div>
 
       {/* Status banner */}
-      <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-5 mb-8 flex items-start gap-3">
-        <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+      <div className="bg-white/5 border border-white/10 rounded p-5 mb-8 flex items-start gap-3">
+        <AlertTriangle className="w-5 h-5 text-white/40 shrink-0 mt-0.5" />
         <div>
-          <p className="text-amber-400 font-semibold text-sm mb-1">Staking is not live yet</p>
-          <p className="text-slate-400 text-sm">
+          <p className="text-white/60 font-semibold text-sm mb-1 font-mono">Staking is not live yet</p>
+          <p className="text-white/35 text-sm">
             Contract address and launch date are <TBABadge className="inline-flex mx-1" />. Only trust the contract address published on this website when staking goes live.
           </p>
         </div>
       </div>
 
       {/* Wallet connect */}
-      <div className="bg-[#10101e] border border-white/5 rounded-2xl p-6 mb-8">
-        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Wallet</h2>
+      <div className="bg-[#111111] border border-white/5 rounded p-6 mb-8">
+        <h2 className="text-sm font-mono text-white/30 uppercase tracking-wider mb-4">Wallet</h2>
 
         {address ? (
           <div className="flex items-center justify-between flex-wrap gap-3">
@@ -91,29 +91,29 @@ export default function StakePage() {
               <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
               <div>
                 <p className="text-white font-mono text-sm font-semibold">{truncate(address)}</p>
-                <p className="text-slate-500 text-xs mt-0.5">Connected · No staking available yet</p>
+                <p className="text-white/30 text-xs mt-0.5">Connected · No staking available yet</p>
               </div>
             </div>
             <button
               onClick={disconnect}
-              className="text-slate-500 hover:text-red-400 text-xs transition-colors border border-white/10 hover:border-red-400/30 rounded-lg px-3 py-1.5"
+              className="text-white/30 hover:text-white text-xs transition-colors border border-white/10 hover:border-white/25 rounded px-3 py-1.5"
             >
               Disconnect
             </button>
           </div>
         ) : (
           <div className="space-y-3">
-            <p className="text-slate-500 text-sm mb-4">Connect your wallet to see your future staking position.</p>
+            <p className="text-white/35 text-sm mb-4">Connect your wallet to see your future staking position.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {["Phantom", "Solflare"].map((wallet) => (
                 <button
                   key={wallet}
                   onClick={() => connect(wallet)}
                   disabled={connecting}
-                  className="flex items-center justify-between gap-3 bg-white/3 border border-white/10 hover:border-purple-500/40 hover:bg-purple-500/5 rounded-xl px-4 py-3 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
+                  className="flex items-center justify-between gap-3 bg-white/3 border border-white/10 hover:border-white/20 hover:bg-white/5 rounded px-4 py-3 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                 >
                   <span className="text-white font-semibold text-sm">{wallet}</span>
-                  <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-purple-400 transition-colors" />
+                  <ChevronRight className="w-4 h-4 text-white/20 group-hover:text-white transition-colors" />
                 </button>
               ))}
             </div>
@@ -122,20 +122,20 @@ export default function StakePage() {
       </div>
 
       {/* How it will work */}
-      <div className="bg-[#10101e] border border-white/5 rounded-2xl p-6 mb-8">
-        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">How Staking Will Work</h2>
+      <div className="bg-[#111111] border border-white/5 rounded p-6 mb-8">
+        <h2 className="text-sm font-mono text-white/30 uppercase tracking-wider mb-6">How Staking Will Work</h2>
         <div className="space-y-4">
           {STAKING_STEPS.map((step, i) => (
             <div key={step.label} className="flex items-start gap-4">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold text-xs shrink-0">
+              <div className="flex items-center justify-center w-8 h-8 rounded bg-white/5 border border-white/10 text-white/40 font-bold text-xs shrink-0 font-mono">
                 {i + 1}
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <step.icon className="w-3.5 h-3.5 text-slate-500" />
-                  <span className="text-white font-semibold text-sm">{step.label}</span>
+                  <step.icon className="w-3.5 h-3.5 text-white/25" />
+                  <span className="text-white/80 font-semibold text-sm">{step.label}</span>
                 </div>
-                <p className="text-slate-500 text-xs mt-0.5">{step.description}</p>
+                <p className="text-white/30 text-xs mt-0.5">{step.description}</p>
               </div>
             </div>
           ))}
@@ -147,10 +147,10 @@ export default function StakePage() {
         <ScamWarningBanner />
       </div>
 
-      <div className="bg-purple-500/5 border border-purple-500/20 rounded-2xl p-5 text-center">
-        <Shield className="w-6 h-6 text-purple-400 mx-auto mb-2" />
-        <p className="text-slate-400 text-sm">
-          <span className="text-white font-semibold">Only trust the contract address published on this website.</span>{" "}
+      <div className="bg-white/3 border border-white/8 rounded p-5 text-center">
+        <Shield className="w-5 h-5 text-white/30 mx-auto mb-2" />
+        <p className="text-white/40 text-sm">
+          <span className="text-white/70 font-semibold">Only trust the contract address published on this website.</span>{" "}
           We will never announce a staking contract address through DMs. Always verify here first.
         </p>
       </div>
